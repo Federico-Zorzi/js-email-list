@@ -6,6 +6,8 @@ const createListElement = (email) =>
 
 //function for generate a random email
 const generateRandomEmail = () => {
+  console.clear();
+
   fetch("https://flynn.boolean.careers/exercises/api/random/mail")
     .then((response) => response.json())
     .then((data) => {
@@ -16,7 +18,16 @@ const generateRandomEmail = () => {
 };
 
 const emailListGroupEl = document.querySelector(".list-group");
+const newEmailListBtnEl = document.getElementById("generate-new-mail-btn");
 
 for (let i = 0; i < 10; i++) {
   generateRandomEmail();
 }
+
+newEmailListBtnEl.addEventListener("click", () => {
+  emailListGroupEl.innerHTML = ``;
+
+  for (let i = 0; i < 10; i++) {
+    generateRandomEmail();
+  }
+});
