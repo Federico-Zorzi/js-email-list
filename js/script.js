@@ -1,10 +1,16 @@
-//function for create an item in the list
+/**
+ * Funzione per creare un item da aggiungere ad una lista con all'interno un'email
+ * @param {string} email inserire email per stampare un elemento della lista di mail
+ * @returns tag HTML 'li' per aggiungerlo alla lista
+ */
 const createListElement = (email) =>
   (emailListGroupEl.innerHTML += `
   <li class="list-group-item">${email}</li>
   `);
 
-//function for generate a random email
+/**
+ * Funzione per generare random email
+ */
 const generateRandomEmail = () => {
   console.clear();
 
@@ -17,17 +23,18 @@ const generateRandomEmail = () => {
     });
 };
 
+const emailNumber = 10;
 const emailListGroupEl = document.querySelector(".list-group");
 const newEmailListBtnEl = document.getElementById("generate-new-mail-btn");
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < emailNumber; i++) {
   generateRandomEmail();
 }
 
 newEmailListBtnEl.addEventListener("click", () => {
   emailListGroupEl.innerHTML = ``;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < emailNumber; i++) {
     generateRandomEmail();
   }
 });
